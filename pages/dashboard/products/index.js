@@ -42,7 +42,7 @@ function DashboardProduct() {
                   className="card card-compact lg:w-72 w-96 bg-base-100 shadow-xl"
                 >
                   <figure>
-                    <img src={el?.data?.image} alt="Shoes" />
+                    <img src={el?.data?.image} />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{el?.data?.name}</h2>

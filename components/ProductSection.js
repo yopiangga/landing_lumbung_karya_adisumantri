@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { BrowserView, MobileView } from "react-device-detect";
+import { useEffect, useState } from "react";
+import { getProducts } from "services/product_services";
 
 import p11 from "public/images/product/coconut-charcoal-briquette-1.jpg";
 import p12 from "public/images/product/coconut-charcoal-briquette-2.jpg";
@@ -25,7 +27,7 @@ import p53 from "public/images/product/virgin-coconut-oil-3.jpg";
 import { TitleComp } from "./TitleComp";
 import Slider from "react-slick";
 
-const items = [
+const items2 = [
   {
     title: "Coconut Charcoal Briquette",
     image: p11,
@@ -89,6 +91,8 @@ const items = [
 ];
 
 export function ProductSection() {
+  const [products, setProducts] = useState([]);
+
   const settingsMobile = {
     dots: true,
     autoplay: true,
@@ -103,6 +107,17 @@ export function ProductSection() {
     slidesToScroll: 1,
     slidesToShow: 3,
   };
+
+  useEffect(() => {
+    getProducts()
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div id="product" className="w-full flex justify-center">
       <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
@@ -110,20 +125,24 @@ export function ProductSection() {
         <div className="mt-16 h-full w-full">
           <BrowserView>
             <Slider {...settingsDesktop}>
-              {items.map((el, idx) => {
+              {products.map((el, idx) => {
                 return (
                   <div className=" p-4" key={idx}>
                     <div className="bg-white rounded-lg">
                       <div className="w-full h-56 rounded-lg overflow-hidden mx-auto">
-                        <Image
-                          src={el.image}
+                        {/* <Image
+                          src={el?.data?.image}
                           layout="responsive"
                           objectFit="contain"
+                        /> */}
+                        <img
+                          src={el?.data?.image}
+                          className="w-full h-full relative z-0"
                         />
                       </div>
 
                       <h2 className="text-lg text-gray-900 font-medium title-font my-4">
-                        {el.title}
+                        {el?.data?.name}
                       </h2>
                     </div>
                   </div>
@@ -133,20 +152,24 @@ export function ProductSection() {
           </BrowserView>
           <MobileView>
             <Slider {...settingsMobile}>
-              {items.map((el, idx) => {
+              {products.map((el, idx) => {
                 return (
                   <div className=" p-4" key={idx}>
                     <div className="bg-white rounded-lg">
                       <div className="w-full h-56 rounded-lg overflow-hidden mx-auto">
-                        <Image
-                          src={el.image}
+                        {/* <Image
+                          src={el?.data?.image}
                           layout="responsive"
                           objectFit="contain"
+                        /> */}
+                        <img
+                          src={el?.data?.image}
+                          className="w-full h-full relative z-0"
                         />
                       </div>
 
                       <h2 className="text-lg text-gray-900 font-medium title-font my-4">
-                        {el.title}
+                        {el?.data?.name}
                       </h2>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 import LayoutLanding from "layouts/landing/index";
 import Slider from "react-slick";
-
+import { useEffect, useState } from "react";
+import { getProducts } from "services/product_services";
 import Image from "next/image";
 
 import p11 from "public/images/product/coconut-charcoal-briquette-1.jpg";
@@ -22,10 +23,9 @@ import p43 from "public/images/product/rbd-coconut-oil-3.jpg";
 import p51 from "public/images/product/virgin-coconut-oil-1.jpg";
 import p52 from "public/images/product/virgin-coconut-oil-2.jpg";
 import p53 from "public/images/product/virgin-coconut-oil-3.jpg";
-import { useState } from "react";
 import vision from "public/images/bg/vision-mission.jpg";
 
-const products = [
+const products2 = [
   {
     name: "Virgin Coconut Oil",
     description:
@@ -203,14 +203,26 @@ const products = [
 
 export default function Product() {
   const [active, setActive] = useState({ idx: 0, choice: 0 });
+  const [products, setProducts] = useState([]);
 
   const settings = {
-    dots: true,
+    // dots: true,
     autoplay: true,
     infinite: true,
     slidesToScroll: 1,
     slidesToShow: 1,
   };
+
+  useEffect(() => {
+    getProducts()
+      .then((res) => {
+        setProducts(res);
+        // console.log(res)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   function convertTextToMessage(text) {
     return text.replace(" ", "%20");
@@ -266,15 +278,20 @@ export default function Product() {
                 >
                   <div className="md:w-72 md:h-full h-64 relative">
                     <Slider {...settings}>
-                      {el.image.map((e, i) => {
+                      {el?.data?.image.map((e, i) => {
                         return (
-                          <div key={i} className="h-64">
-                            <Image
+                          <div key={i} className="h-56 py-4">
+                            {/* <Image
                               src={e}
                               layout="responsive"
                               objectFit="cover"
+                            /> */}
+                            <img
+                              src={e}
+                              className="w-full h-full relative z-0"
                             />
-                            <h4 className="absolute bottom-4 left-4 text-white font-medium">
+
+                            <h4 className="absolute z-10 bottom-4 left-4 text-white font-medium">
                               PT Lumbung Karya Adisumantri
                             </h4>
                           </div>
@@ -285,7 +302,7 @@ export default function Product() {
 
                   <div className="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
                     <h3 className="font-black text-gray-800 md:text-3xl text-xl mb-2">
-                      {el.name}
+                      {el?.data?.name}
                     </h3>
                     <ul className="flex text-center border-b border-gray-200 mb-4">
                       <li className="flex-1">
@@ -327,12 +344,12 @@ export default function Product() {
                       }`}
                     >
                       <p className="md:text-lg text-gray-500 text-base mb-3">
-                        {el.description}
+                        {el?.data?.description}
                       </p>
 
                       <a
                         href={`https://wa.me/6281538222363?text= ${convertTextToMessage(
-                          el.cta
+                          el?.data?.cta
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -349,7 +366,7 @@ export default function Product() {
                           : "hidden"
                       }`}
                     >
-                      {el.ingredients.map((spe, i) => {
+                      {el?.data?.ingredients.map((spe, i) => {
                         return (
                           <div key={i} className="flex gap-4">
                             <div className="lg:w-40 w-1/3 min-w-fit">
