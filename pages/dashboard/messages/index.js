@@ -3,11 +3,15 @@ import LayoutDashboard from "layouts/dashboard/index";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getMessages, deleteMessage } from "services/message_services";
+import { getAuth } from "firebase/auth";
+import Router from "next/router";
 
 function DashboardUsers() {
   const [data, setData] = useState([]);
+  var user = getAuth().currentUser;
 
   useEffect(() => {
+    if (user == null) Router.push("/auth/login");
     getMessages()
       .then((res) => {
         setData(res);

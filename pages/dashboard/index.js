@@ -2,14 +2,18 @@ import withProtected from "hoc/withProtected";
 import LayoutDashboard from "layouts/dashboard/index";
 import { useState, useEffect } from "react";
 import { countProduct } from "services/product_services";
+import { getAuth } from "firebase/auth";
+import Router from "next/router";
 
 function Dashboard() {
   const [visitor, setVisitor] = useState("-");
-  const [user, setUser] = useState("-");
   const [product, setProduct] = useState("-");
   const [transaction, setTransaction] = useState("-");
 
+  var user = getAuth().currentUser;
+
   useEffect(() => {
+    if (user == null) Router.push("/auth/login");
     countProduct().then((res) => {
       setProduct(res);
     });
@@ -20,7 +24,7 @@ function Dashboard() {
     <LayoutDashboard menuActive="0" title="Dashboard">
       <div className="overflow-auto h-screen pb-24 px-4 md:px-6">
         <h1 className="text-4xl font-semibold text-gray-800 dark:text-white">
-          Good afternoon, Admin
+          Hello, Admin
         </h1>
         <h2 className="text-md text-gray-400">
           Here&#x27;s what&#x27;s happening with your ambassador account today.

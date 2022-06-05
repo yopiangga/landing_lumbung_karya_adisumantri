@@ -3,13 +3,16 @@ import LayoutDashboard from "layouts/dashboard/index";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getProducts } from "services/product_services";
-import NumberFormat from "react-number-format";
 import { deleteProduct } from "services/product_services";
+import Router from "next/router";
+import { getAuth } from "firebase/auth";
+
 function DashboardProduct() {
   const [data, setData] = useState([]);
+  var user = getAuth().currentUser;
 
   useEffect(() => {
-    // getProducts();
+    if (user == null) Router.push("/auth/login");
     getProducts()
       .then((res) => {
         setData(res);

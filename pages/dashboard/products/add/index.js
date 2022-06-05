@@ -1,4 +1,3 @@
-import { useUser } from "context/user";
 import withProtected from "hoc/withProtected";
 import LayoutDashboard from "layouts/dashboard/index";
 import Link from "next/link";
@@ -8,9 +7,10 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { addProduct } from "services/product_services";
 import Router from "next/router";
 import { FiPlus, FiX } from "react-icons/fi";
+import { getAuth } from "firebase/auth";
+import { useEffect } from "react";
 
 function DashboardAddProduct() {
-  const user = useUser();
   const [product, setProduct] = useState();
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
@@ -20,6 +20,12 @@ function DashboardAddProduct() {
   const [imagePreview3, setImagePreview3] = useState(false);
   const [ingredients, setIngredients] = useState([{ label: "", value: "" }]);
   const [loading, setLoading] = useState(false);
+
+  var user = getAuth().currentUser;
+
+  useEffect(() => {
+    if (user == null) Router.push("/auth/login");
+  }, []);
 
   const handleImageAsFile = (e) => {
     const file = e.target.files[0];
