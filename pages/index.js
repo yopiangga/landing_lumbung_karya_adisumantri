@@ -21,6 +21,7 @@ import { GlobeSection } from "components/GlobeSection";
 import { ContactSection } from "components/ContactSection";
 import { Footer } from "components/Footer";
 import LayoutLanding from "layouts/landing";
+import { FounderSection } from "components/FounderSection";
 
 export default function Home() {
   const [active, setActive] = useState(0);
@@ -47,6 +48,7 @@ export default function Home() {
       <ProductSection />
       <TestimonialSection />
       <NewsSection />
+      <FounderSection />
       <FaqSection />
       <PaymentSection />
       <CertifiedSection />

@@ -19,7 +19,7 @@ export function NewsSection() {
     autoplay: true,
     infinite: true,
     slidesToScroll: 1,
-    slidesToShow: 3,
+    slidesToShow: 2,
   };
   const items = [
     {
