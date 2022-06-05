@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function PaymentSection() {
   return (
-    <div>
+    <div id="payment">
       <section className="text-white bg-gray-900 relative">
         <div className="w-full h-full absolute bg-black bg-opacity-50"></div>
         <div className="max-w-screen-xl relative px-4 py-32 mx-auto lg:h-fit lg:items-center lg:flex">

@@ -23,16 +23,13 @@ export function ReasonSection() {
     },
   ];
   return (
-    <div className="w-full flex justify-center">
-      <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
-        <TitleComp
-          title="THE REASON FOR CHOOSING US"
-          desc="Lorem Ipsum Dollor sit ammet"
-        />
-        <div className="grid grid-cols-3 mt-16 gap-6">
+    <div id="why-me" className="w-full flex justify-center">
+      <div className="max-w-7xl w-full flex flex-col items-center text-center py-20 px-8">
+        <TitleComp title="THE REASON FOR CHOOSING US" desc="We are the best" />
+        <div className="grid lg:grid-cols-3 grid-cols-1 mt-16 gap-6">
           {items.map((el, idx) => {
             return (
-              <div className="item" key={idx}>
+              <div className="item" key={idx} data-aos="fade-up">
                 <div className="w-20 h-20 rounded-lg overflow-hidden mx-auto">
                   <Image
                     src={el.image}

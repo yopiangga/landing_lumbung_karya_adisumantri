@@ -1,8 +1,11 @@
 import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 import { TitleComp } from "./TitleComp";
 import { useState } from "react";
+import { addMessage } from "services/message_services";
 
 export function ContactSection() {
+  const [loading, setLoading] = useState(false);
+
   const [message, setMessage] = useState({
     fullname: "",
     email: "",
@@ -15,13 +18,22 @@ export function ContactSection() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // sendMessage(message.fullname, message.email, message.textMessage);
+    setLoading(true);
+    addMessage(message.fullname, message.email, message.textMessage)
+      .then((res) => {
+        setLoading(false);
+        setMessage({ fullname: "", email: "", textMessage: "" });
+      })
+      .catch((err) => {
+        setLoading(false);
+        setMessage({ fullname: "", email: "", textMessage: "" });
+      });
   }
 
   return (
-    <div id="ContactUs" className="flex w-full justify-center">
-      <div className="w-full max-w-7xl flex">
-        <div className="lg:w-7/12 w-full py-20 lg:px-14 px-8 bg-gray-100 text-center">
+    <div id="contact" className="flex w-full justify-center">
+      <div className="w-full max-w-7xl flex flex-col lg:flex-row">
+        <div className="lg:w-7/12 w-full py-20 lg:px-14 px-8 bg-gray-100 dark:bg-gray-900 text-center">
           <div className="mt-12"></div>
           <TitleComp
             title="Contact Us"
@@ -37,6 +49,7 @@ export function ContactSection() {
                 className="bg-white border-2 border-gray-300 outline-none h-14 w-full text-lg px-4 text-gray-900 mt-16"
                 placeholder="Name"
                 onChange={handleChange}
+                value={message.fullname}
               />
               <input
                 type="email"
@@ -45,6 +58,7 @@ export function ContactSection() {
                 className="bg-white border-2 border-gray-300 outline-none h-14 w-full text-lg px-4 text-gray-900 mt-6"
                 placeholder="Email"
                 onChange={handleChange}
+                value={message.email}
               />
               <textarea
                 type="text"
@@ -54,14 +68,19 @@ export function ContactSection() {
                 className="bg-white border-2 border-gray-300 outline-none w-full text-lg px-4 py-4 text-gray-900 mt-6"
                 placeholder="Message"
                 onChange={handleChange}
+                value={message.textMessage}
               />
 
-              <button
-                type="submit"
-                className=" bg-gray-900 hover:bg-gray-900 text-white font-medium h-14 px-6 mt-8 text-lg"
-              >
-                SEND MESSAGE
-              </button>
+              {loading ? (
+                <h4>Loading ....</h4>
+              ) : (
+                <button
+                  type="submit"
+                  className=" bg-gray-900 hover:bg-gray-900 text-white font-medium h-14 px-6 mt-8 text-lg"
+                >
+                  SEND MESSAGE
+                </button>
+              )}
             </form>
           </div>
         </div>
@@ -81,10 +100,7 @@ export function ContactSection() {
                 <h2 className="text-xl font-medium mb-3">
                   PT Lumbung Karya Adisumantri
                 </h2>
-                <a
-                  className="text-lg"
-                  href="https://goo.gl/maps/rKmsvQXbLxtU36BRA"
-                >
+                <a className="text-lg" href="" data-aos="fade-up">
                   Jl Letjen Alamsyah Ratu Prawiranegara <br />
                   Ruko Foodcity No 5 Bandar Lampung <br />
                   Lampung, Sumatra, Indonesia
@@ -97,7 +113,11 @@ export function ContactSection() {
               </div>
               <div>
                 <h2 className="text-xl font-medium mb-3">WhatsApp</h2>
-                <a className="text-lg" href="https://wa.me/6281538222363">
+                <a
+                  className="text-lg"
+                  href="https://wa.me/6281538222363"
+                  data-aos="fade-up"
+                >
                   +62 815-3822-2363
                 </a>
               </div>
@@ -108,7 +128,11 @@ export function ContactSection() {
               </div>
               <div>
                 <h2 className="text-xl font-medium mb-3">Busines Email</h2>
-                <a className="text-lg" href="mailto:info@aisoru.com">
+                <a
+                  className="text-lg"
+                  href="mailto:adhi.unel@gmail.com"
+                  data-aos="fade-up"
+                >
                   adhi.unel@gmail.com
                 </a>
               </div>

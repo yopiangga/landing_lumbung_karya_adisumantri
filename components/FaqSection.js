@@ -48,7 +48,7 @@ export function FaqSection() {
   ];
 
   return (
-    <div className="w-full flex justify-center">
+    <div id="faq" className="w-full flex justify-center">
       <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
         <TitleComp
           title="Frequently Asked Questions"
@@ -60,14 +60,18 @@ export function FaqSection() {
         >
           {faq.map(function (el, idx) {
             return (
-              <div key={idx} className="col-lg-10 col-md-12 col-sm-12">
+              <div
+                key={idx}
+                className="col-lg-10 col-md-12 col-sm-12"
+                data-aos="fade-up"
+              >
                 <div className="team-item flex px-4 py-4 justify-between">
                   <div className="team-content-1 mr-4 ">
                     <h6 className="font-medium">{el.question}</h6>
                     <p
                       id={`answer${idx}`}
                       style={{ height: `${h?.[`answer${idx}`]}px` }}
-                      className="m-0 w-full text-gray-600 text-md mt-2 h-0 overflow-hidden duration-300"
+                      className="m-0 w-full text-gray-600 dark:text-white text-md mt-2 h-0 overflow-hidden duration-300"
                     >
                       {el.answer}
                     </p>

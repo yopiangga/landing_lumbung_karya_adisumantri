@@ -1,21 +1,26 @@
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
+// import logo from "public/images/logo.png";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50">
+    <footer className="">
       <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <span className="block w-32 bg-gray-200 rounded-lg">
-              {/* <Image src={logo2} layout="responsive" objectFit="cover" /> */}
-            </span>
+            {/* <span className="block w-32 rounded-lg"> */}
+            {/* <Image src={logo} layout="responsive" objectFit="cover" /> */}
+            <h1 className="text-4xl font-bold">
+              Jendral <br />
+              Coco
+            </h1>
+            {/* </span> */}
 
             <h2 className="mt-4 font-medium text-xl">
               PT Lumbung Karya Adisumantri
             </h2>
 
-            <p className=" mt-2 text-sm text-gray-500 ">
+            <p className=" mt-2 text-sm text-gray-500 dark:text-white ">
               We are well known for best products as well as 24/7 available for
               support to our valuable customers. We know you are interested and
               want to know more about our products. so what are you waiting for.
@@ -30,14 +35,14 @@ export function Footer() {
             <div>
               <p className="font-medium text-xl">Company</p>
 
-              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
                 <Link href="/home">
                   <a className="hover:opacity-75 text-lg"> Home </a>
                 </Link>
-                <Link href="/about">
+                <Link href="/#our-company">
                   <a className="hover:opacity-75 text-lg"> About us </a>
                 </Link>
-                <Link href="/certificate">
+                <Link href="/#certificate">
                   <a className="hover:opacity-75 text-lg"> Certificate </a>
                 </Link>
               </nav>
@@ -46,7 +51,7 @@ export function Footer() {
             <div>
               <p className="font-medium text-xl">Services</p>
 
-              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
                 <Link href="/product">
                   <a className="hover:opacity-75 text-lg"> Product </a>
                 </Link>
@@ -59,14 +64,14 @@ export function Footer() {
             <div>
               <p className="font-medium text-xl">Helpful Links</p>
 
-              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                <Link href="/faq">
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
+                <Link href="/#faq">
                   <a className="hover:opacity-75 text-lg"> FAQs </a>
                 </Link>
-                <Link href="/term">
+                <Link href="/#payment">
                   <a className="hover:opacity-75 text-lg"> Term </a>
                 </Link>
-                <Link href="/certificate">
+                <Link href="/#certificate">
                   <a className="hover:opacity-75 text-lg"> Contact </a>
                 </Link>
               </nav>
@@ -75,7 +80,7 @@ export function Footer() {
             <div>
               <p className="font-medium text-xl">Legal</p>
 
-              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500 dark:text-white">
                 <a className="hover:opacity-75 text-lg" href="">
                   {" "}
                   Privacy Policy{" "}
@@ -97,7 +102,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 text-xs text-gray-500">
+        <p className="mt-8 text-xs text-gray-500 dark:text-white">
           &copy; 2022 PT Lumbung Karya Adisumantri
         </p>
       </div>

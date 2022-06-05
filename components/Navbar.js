@@ -1,79 +1,120 @@
-export function Navbar() {
+import Link from "next/link";
+import Image from "next/image";
+import logo from "public/images/logo.png";
+
+export function Navbar({ id }) {
+  const items = [
+    { title: "Home", href: "/" },
+    { title: "Our Company", href: "/#our-company" },
+    // { title: "Visi & Purpose", href: "/#visi-purpose" },
+    // { title: "Value", href: "/#value" },
+    { title: "Why me", href: "/#why-me" },
+    { title: "Product", href: "/product" },
+    { title: "Testimonial", href: "/#testimonial" },
+    { title: "News", href: "/news" },
+    { title: "FAQ", href: "/#faq" },
+    // { title: "Payment", href: "/#payment" },
+    { title: "Certified", href: "/#certified" },
+    // { title: "Globe", href: "/#globe" },
+    { title: "Contact", href: "/#contact" },
+  ];
+
   return (
-    <div className="navbar bg-base-100 fixed z-50 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex="0" className="btn btn-ghost btn-circle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <div className="flex justify-center">
+      <div className="navbar bg-transparent absolute z-50 w-full">
+        <div className="navbar-start w-full lg:w-fit">
+          <div className="dropdown">
+            <label tabIndex="0" className="btn btn-white lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52  text-lg font-medium"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              />
-            </svg>
+              {items.map((el, idx) => {
+                return (
+                  <li key={idx}>
+                    <Link href={el.href}>
+                      <a
+                        className={`active:bg-yellow-500 ${
+                          id == idx ? "bg-yellow-500 text-white" : ""
+                        }`}
+                      >
+                        {el.title}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="lg:ml-0 ml-auto">
+            <h1 className="text-2xl font-bold py-2 px-4 lg:text-left text-right text-white">
+              Jendral <br />
+              Coco
+            </h1>
+          </div>
+        </div>
+        <div className="navbar-end hidden lg:flex text-white text-lg font-medium w-full">
+          <ul className="menu menu-horizontal p-0">
+            {items.map((el, idx) => {
+              return (
+                <li key={idx}>
+                  <Link href={el.href}>
+                    <a
+                      className={`active:bg-yellow-500 ${
+                        id == idx ? "bg-yellow-500" : ""
+                      }`}
+                    >
+                      {el.title}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function NavbarDashboard({ title }) {
+  return (
+    <div className="navbar bg-transparent mb-0 rounded-box">
+      <div className="flex-1">
+        <a className="btn btn-ghost normal-case text-xl">{title}</a>
+      </div>
+      <div className="flex-none">
+        <div className="dropdown dropdown-end flex items-center">
+          <h4 className="mr-2">Admin</h4>
+          <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img src="https://api.lorem.space/image/face?hash=33791" />
+            </div>
           </label>
           <ul
             tabIndex="0"
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Homepage</a>
-            </li>
-            <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
+              <a>Logout</a>
             </li>
           </ul>
         </div>
-      </div>
-      <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
-      </div>
-      <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
-        <button className="btn btn-ghost btn-circle">
-          <div className="indicator">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-              />
-            </svg>
-            <span className="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
       </div>
     </div>
   );

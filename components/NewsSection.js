@@ -1,8 +1,20 @@
 import { TitleComp } from "./TitleComp";
 import Slider from "react-slick";
+import Image from "next/image";
+import news1 from "public/images/news/news-1.png";
+import news2 from "public/images/news/news-2.png";
+import Link from "next/link";
+import { BrowserView, MobileView } from "react-device-detect";
 
 export function NewsSection() {
-  const settings = {
+  const settingsMobile = {
+    dots: true,
+    autoplay: true,
+    infinite: true,
+    slidesToScroll: 1,
+    slidesToShow: 1,
+  };
+  const settingsDesktop = {
     dots: true,
     autoplay: true,
     infinite: true,
@@ -11,52 +23,73 @@ export function NewsSection() {
   };
   const items = [
     {
-      title: "SELECTED PRODUCTS",
-      desc: "Products are made from high-quality coconut ingredients that have also been hand-picked.",
+      title: "MSSRF project to enhance coconut farmers’ income in Kuttanad",
+      desc: "The M.S. Swaminathan Research Foundation (MSSRF) has joined hands with the SAARC Development Fund (SDF)",
+      image: news1,
     },
     {
-      title: "SELECTED PRODUCTS",
-      desc: "Products are made from high-quality coconut ingredients that have also been hand-picked.",
-    },
-    {
-      title: "SELECTED PRODUCTS",
-      desc: "Products are made from high-quality coconut ingredients that have also been hand-picked.",
-    },
-    {
-      title: "SELECTED PRODUCTS",
-      desc: "Products are made from high-quality coconut ingredients that have also been hand-picked.",
+      title: "Coconut husk charcoal maker strikes big deal",
+      desc: "A Local producer of charcoal briskets from coconut husks has received the greenlight to export part of its produce ",
+      image: news2,
     },
   ];
   return (
-    <div className="w-full flex justify-center">
+    <div id="news" className="w-full flex justify-center">
       <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
-        <TitleComp title="NEWS" desc="Lorem Ipsum Dollor sit ammet" />
+        <TitleComp title="NEWS" desc="Latest story from our company" />
         <div className="mt-16 h-full w-full ">
-          <Slider {...settings}>
-            {items.map((el, idx) => {
-              return (
-                <div className=" p-4" key={idx}>
-                  <div className="bg-white rounded-lg">
-                    <img
-                      className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
-                      src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg"
-                      alt="Image Size 720x400"
-                    />
-                    <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                      SUBTITLE
-                    </h3>
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                      Chichen Itza
-                    </h2>
-                    <p className="leading-relaxed text-base">
-                      Fingerstache flexitarian street art 8-bit waistcoat.
-                      Distillery hexagon disrupt edison bulbche.
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </Slider>
+          <BrowserView>
+            <Slider {...settingsDesktop}>
+              {items.map((el, idx) => {
+                return (
+                  <Link href={`/news/${idx + 1}`} key={idx}>
+                    <div className=" p-4 hover:cursor-pointer">
+                      <div className="bg-white rounded-lg">
+                        <div className="w-full h-56 rounded-lg overflow-hidden mx-auto">
+                          <Image
+                            src={el.image}
+                            layout="responsive"
+                            objectFit="contain"
+                          />
+                        </div>
+
+                        <h2 className="text-lg text-gray-900 font-medium title-font my-4">
+                          {el.title}
+                        </h2>
+                        <p className="leading-relaxed text-base">{el.desc}</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </Slider>
+          </BrowserView>
+          <MobileView>
+            <Slider {...settingsMobile}>
+              {items.map((el, idx) => {
+                return (
+                  <Link href={`/news/${idx + 1}`} key={idx}>
+                    <div className=" p-4 hover:cursor-pointer">
+                      <div className="bg-white rounded-lg">
+                        <div className="w-full h-56 rounded-lg overflow-hidden mx-auto">
+                          <Image
+                            src={el.image}
+                            layout="responsive"
+                            objectFit="contain"
+                          />
+                        </div>
+
+                        <h2 className="text-lg text-gray-900 font-medium title-font my-4">
+                          {el.title}
+                        </h2>
+                        <p className="leading-relaxed text-base">{el.desc}</p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </Slider>
+          </MobileView>
         </div>
       </div>
     </div>

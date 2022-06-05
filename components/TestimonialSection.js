@@ -33,11 +33,11 @@ export function TestimonialSection() {
     },
   ];
   return (
-    <div className="w-full flex justify-center">
+    <div id="testimonial" className="w-full flex justify-center">
       <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
         <TitleComp
           title="WHAT PEOPLE SAID"
-          desc="Lorem Ipsum Dollor sit ammet"
+          desc="They are satisfied with our service"
         />
         <div className="mt-16 h-full w-full ">
           <Slider {...settings}>
@@ -48,8 +48,10 @@ export function TestimonialSection() {
                   className="flex flex-col justify-center items-center w-full"
                 >
                   <FaQuoteLeft className="text-gray-300 text-4xl mx-auto" />
-                  <p className="mt-8 text-lg text-gray-600">{el.message}</p>
-                  <h4 className="text-lg text-gray-900 mt-4 font-medium">
+                  <p className="mt-8 text-lg text-gray-600 dark:text-white">
+                    {el.message}
+                  </p>
+                  <h4 className="text-lg text-gray-900 dark:text-white mt-4 font-medium">
                     {el.name}
                   </h4>
                   <Flag code={el.flag} className="w-10 h-10 mt-4 mx-auto" />

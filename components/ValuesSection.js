@@ -1,7 +1,7 @@
 import { TitleComp } from "./TitleComp";
 import Image from "next/image";
 import setting from "public/images/icon/setting.png";
-import jempol from "public/images/icon/jempol.png";
+import globe from "public/images/icon/globe.png";
 import centang from "public/images/icon/centang.png";
 
 export function ValuesSection() {
@@ -14,7 +14,7 @@ export function ValuesSection() {
     {
       title: "CENTERED",
       desc: "Our employees and partners worked with local communities, involving them in decision-making at all levels.",
-      image: jempol,
+      image: globe,
     },
     {
       title: "EFFECTIVE",
@@ -23,16 +23,16 @@ export function ValuesSection() {
     },
   ];
   return (
-    <div className="w-full flex justify-center">
-      <div className="max-w-7xl w-full flex flex-col items-center text-center py-20">
+    <div id="value" className="w-full flex justify-center">
+      <div className="max-w-7xl w-full flex flex-col items-center text-center py-20 px-8">
         <TitleComp
           title="OUR CORE VALUES"
-          desc="Lorem Ipsum Dollor sit ammet"
+          desc="The main value in our company"
         />
-        <div className="grid grid-cols-3 mt-16 gap-6">
+        <div className="grid lg:grid-cols-3 grid-cols-1 mt-16 gap-6">
           {items.map((el, idx) => {
             return (
-              <div className="item" key={idx}>
+              <div className="item" key={idx} data-aos="fade-up">
                 <div className="w-20 h-20 rounded-lg overflow-hidden mx-auto">
                   <Image
                     src={el.image}
