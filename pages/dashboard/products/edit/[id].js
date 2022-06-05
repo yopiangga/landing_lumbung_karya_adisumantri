@@ -275,13 +275,13 @@ function DashboardEditProduct() {
                         <div className="relative h-32">
                           <div className="border-2 border-dashed border-dark border-opacity-90 text-dark font-bold w-full h-32 rounded-xl flex flex-col justify-center items-center absolute z-0">
                             <FaUpload />
-                            <span className="ml-2 mt-2 w-96 text-center">
+                            <p className="ml-2 mt-2 text-center break-all">
                               {file1 == null ||
                               file1 == undefined ||
                               file1 == ""
                                 ? "Upload Image"
                                 : file1.name}
-                            </span>
+                            </p>
                           </div>
                           <input
                             className="cursor-pointer w-full h-40 opacity-0 pin-r pin-t absolute z-10"
@@ -308,13 +308,13 @@ function DashboardEditProduct() {
                         <div className="relative h-32">
                           <div className="border-2 border-dashed border-dark border-opacity-90 text-dark font-bold w-full h-32 rounded-xl flex flex-col justify-center items-center absolute z-0">
                             <FaUpload />
-                            <span className="ml-2 mt-2 w-96 text-center">
+                            <p className="ml-2 mt-2 text-center break-all">
                               {file2 == null ||
                               file2 == undefined ||
                               file2 == ""
                                 ? "Upload Image"
                                 : file2.name}
-                            </span>
+                            </p>
                           </div>
                           <input
                             className="cursor-pointer w-full h-40 opacity-0 pin-r pin-t absolute z-10"
@@ -341,13 +341,13 @@ function DashboardEditProduct() {
                         <div className="relative h-32">
                           <div className="border-2 border-dashed border-dark border-opacity-90 text-dark font-bold w-full h-32 rounded-xl flex flex-col justify-center items-center absolute z-0">
                             <FaUpload />
-                            <span className="ml-2 mt-2 w-96 text-center">
+                            <p className="ml-2 mt-2 text-center break-all">
                               {file3 == null ||
                               file3 == undefined ||
                               file3 == ""
                                 ? "Upload Image"
                                 : file3.name}
-                            </span>
+                            </p>
                           </div>
                           <input
                             className="cursor-pointer w-full h-40 opacity-0 pin-r pin-t absolute z-10"
