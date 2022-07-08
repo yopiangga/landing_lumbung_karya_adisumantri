@@ -18,7 +18,7 @@ export default function LayoutLanding({ children, title, page }) {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://wa.me/6281538222363"
+          href="https://wa.me/6281539222363"
           className="fixed z-50 bottom-8 right-8 text-white bg-yellow-500 rounded-lg border text-xs border-yellow-500 font-medium px-5 py-2 shadow-lg flex gap-3 items-center"
         >
           <AiOutlineWhatsApp size={24} />
