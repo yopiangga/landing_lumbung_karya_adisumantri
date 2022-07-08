@@ -115,10 +115,10 @@ export function ContactSection() {
                 <h2 className="text-xl font-medium mb-3">WhatsApp</h2>
                 <a
                   className="text-lg"
-                  href="https://wa.me/6281538222363"
+                  href="https://wa.me/6281539222363"
                   data-aos="fade-up"
                 >
-                  +62 815-3822-2363
+                  +62 815-3922-2363
                 </a>
               </div>
             </div>

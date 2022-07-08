@@ -1,5 +1,5 @@
-import { Footer } from "components/footer";
-import { Navbar } from "components/Navbar";
+import { Footer } from "components/Footer.js";
+import { Navbar } from "components/Navbar.js";
 import Head from "next/head";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 
